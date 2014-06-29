@@ -423,14 +423,77 @@
                     "type" : "string",
                     "description": "True or false. Return data for multiple units rolled up to a single result instead of a separate value for each period of time.",
                     "required": true
+                },
+                "unit": {
+                    "location": "query",
+                    "type" : "string",
+                    "description": "minute, hour, day, week or month, default: day | Note: when unit is minute the maximum value for units is 60.",
+                    "required": true
+                },
+                "units": {
+                    "location": "query",
+                    "type" : "string",
+                    "description": "an integer representing the time units to query data for. Pass -1 to return all units of time.",
+                    "required": true
+                },
+                "timezone": {
+                    "location": "query",
+                    "type" : "string",
+                    "description": "An integer hour offset from UTC (-14 to 14), or a timezone string default: America/New_York.",
+                    "required": false
+                },
+                "limit": {
+                    "location": "query",
+                    "type" : "number",
+                    "description": "1 to 1000 (default=100).",
+                    "required": false
+                },
+                "unit_reference_ts": {
+                    "location": "query",
+                    "type" : "number",
+                    "description": "An epoch timestamp, indicating the most recent time for which to pull metrics, default: now. Note: the value of unit_reference_ts rounds to the nearest unit. Note: historical data is stored hourly beyond the most recent 60 minutes. If a unit_reference_ts is specified, unit cannot be minute.",
+                    "required": false
                 }
+
             }
         },
         "LinkCountries": {
             "extends" : "abstract.bitly.link",
             "httpMethod": "GET",
             "uri": "/v3/link/countries",
-            "summary" : "Returns metrics about the countries referring click traffic to a single bitly link."
+            "summary" : "Returns metrics about the countries referring click traffic to a single bitly link.",
+            "parameters" : {
+                "unit": {
+                    "location": "query",
+                    "type" : "string",
+                    "description": "minute, hour, day, week or month, default: day | Note: when unit is minute the maximum value for units is 60.",
+                    "required": true
+                },
+                "units": {
+                    "location": "query",
+                    "type" : "string",
+                    "description": "an integer representing the time units to query data for. Pass -1 to return all units of time.",
+                    "required": true
+                },
+                "timezone": {
+                    "location": "query",
+                    "type" : "string",
+                    "description": "An integer hour offset from UTC (-14 to 14), or a timezone string default: America/New_York.",
+                    "required": false
+                },
+                "limit": {
+                    "location": "query",
+                    "type" : "number",
+                    "description": "1 to 1000 (default=100).",
+                    "required": false
+                },
+                "unit_reference_ts": {
+                    "location": "query",
+                    "type" : "number",
+                    "description": "An epoch timestamp, indicating the most recent time for which to pull metrics, default: now. Note: the value of unit_reference_ts rounds to the nearest unit. Note: historical data is stored hourly beyond the most recent 60 minutes. If a unit_reference_ts is specified, unit cannot be minute.",
+                    "required": false
+                }
+            }
         },
         "abstract.bitly.link_encoders": {
             "extends" : "abstract.bitly",
