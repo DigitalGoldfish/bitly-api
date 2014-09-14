@@ -314,6 +314,26 @@
                 }
             }
         },
+        "UserLinkHistory": {
+            "extends" : "abstract.bitly",
+            "httpMethod": "GET",
+            "uri": "/v3/user/link_history",
+            "summary" : "Returns entries from a user's link history in reverse chronological order.",
+            "parameters": {
+                "limit": {
+                    "location": "query",
+                    "type" : "integer",
+                    "description": "The maximum number of links to return. (min 1; max 100)",
+                    "required": false
+                },
+                "offset": {
+                    "location": "query",
+                    "type" : "integer",
+                    "description": "Which result to start with (defaults to 0)",
+                    "required": false
+                }
+            }
+        },
         "UserLink_save": {
             "extends" : "abstract.bitly",
             "httpMethod": "GET",
